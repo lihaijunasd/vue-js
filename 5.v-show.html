@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--样式消失，正在的消失-->
+   <!--<div v-show="flag">是否为true</div>-->
+   <div v-if="flag">是否为true</div>
+    <div v-if="flag">
+        {{obj.name}}
+    </div>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+            /**
+             * 2.0版本
+             *没有声明的变量是不能使用的比如：$index
+             * 所有方法中的this都是实例；数据是保存在实例上的
+             * v-on: ==@；指令可以使用@代替
+             * v-if是对dom的操作，需要判断数据是否存在；应用场景
+             * v-show 如果频繁的操作
+             * @type {Vue}
+             */
+            console.log(Vue);
+            var vue =new Vue({
+                        /*obj是必须要声明的，才能展示到页面中；如果没有声明是报错的*/
+                        el:'#app',
+                        data:{
+                                    msg:['a','b'],
+                                    flag:false,
+                                    obj:undefined
+                        },
+                        methods:{
+                                    fn:function (e){
+                                                this.msg.push('c')
+                                    }
+                        }
+            });
+            /*所以数据都会挂载到实例上；*/
+</script>
+</body>
+</html>

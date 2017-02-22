@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="msg">{{msg}}
+    {{msg?0:1}}
+    <div v-once>{{msg}}</div>
+    <!--渲染一次，如果我们绑定的数据是html--转化成标签-->
+    <div v-html="msg"></div>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+            /**JONP +HTML
+             *初始化vue
+             * 数据双向绑定
+             * 表达式的意义
+             * 1 赋值
+             * 2 三元运算符
+             */
+    var vue=new Vue({
+                el:'#app',
+                data:{
+                            msg:'helloworld'
+                }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+<div id="app">
+ <div class="container">
+     <div class="row">
+         <div class="col-md-12">
+            <table class="table-bordered table">
+                <thead>
+                <tr>
+                    <th>商品名称</th>
+                    <th>商品信息</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="v in iphone">
+                    <td>{{v.name}}</td>
+                    <td>{{v.pirce}}</td>
+                    <td>
+                        <button class="btn btn-danger" @click="remove($event,v.id)">删除</button>
+                    </td>
+
+                </tr>
+
+
+                </tbody>
+                <tr class="" v-show="iphone.length?iphone.length:0">
+                    <td class='btn col-md-1 btn-danger' colspan="3" @click="removeAll">删除全部</td>
+                </tr>
+            </table>
+             <form action="">
+                 <div class="form-group">
+                     <label for="username" class="control-label">商品名称</label>
+                     <input type="text" id="username" name="username" class="form-control" v-model="name">
+                 </div>
+                 <div class="form-group">
+                     <label for="password" class="control-label">商品价格</label>
+                     <input type="text" id="password" name="password" class="form-control" v-model="pirce">
+                 </div>
+                 <div class="form-group">
+                     <!--button 是默认提交的，刷新页面-->
+                     <button class="btn btn-primary" type="button">修改</button>
+                     <button class="btn btn-danger" type="button" @click="add">增加</button>
+                 </div>
+             </form>
+
+         </div>
+     </div>
+ </div>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+            /**
+             * 2.0版本
+             *没有声明的变量是不能使用的比如：$index
+             * 所有方法中的this都是实例；数据是保存在实例上的
+             * v-on: ==@；指令可以使用@代替
+             * v-if是对dom的操作，需要判断数据是否存在；应用场景
+             * v-show 如果频繁的操作
+             * @type {Vue}
+             */
+
+            var vue =new Vue({
+                /*obj是必须要声明的，才能展示到页面中；如果没有声明是报错的*/
+                        el:'#app',
+                        data:{
+                                  name:'',
+                                    pirce:'',
+                                    iphone:[
+                                                {name:'iphone5',pirce:50,id:1},
+                                                {name:'iphone6',pirce:50,id:2},
+                                                {name:'iphone7',pirce:50,id:3}
+                                    ]
+                        },
+                        methods:{
+                                    remove:function (e,id) {
+                                                this.iphone=this.iphone.filter(function (item,index) {
+                                                            return item.id!=id
+                                                })
+                                    },
+                                    removeAll:function (e) {
+                                                this.iphone=[]
+                                    },
+                                    add:function (e) {
+
+                                                var obj ={
+                                                         name:   this.name,
+                                                        pirce: this.pirce,
+                                                };
+                                                obj.id=this.iphone.length?this.iphone[this.iphone.length-1]['id']+1:1;
+                                          this.iphone.push(obj);
+                                          this.name=this.pirce=''
+                                    }
+                        }
+            });
+            /*所以数据都会挂载到实例上；*/
+</script>
+</body>
+</html>

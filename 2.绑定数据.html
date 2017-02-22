@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--重复谁 就要在谁上v-for-->
+    <ul>
+        <!--a变量代表的就是每一项-->
+        <li v-for="a in arr " >{{a}}</li>
+        <!--在vue2中可以循环重复的数据  track-by废弃了-->
+    </ul>
+    <ul>
+        <li v-for="(a,index) in arr">{{index}}{{a}}</li>
+        <!--item index 很人性化-->
+    </ul>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    /*绑定数组*/
+    /**
+     * 将数据toString();
+     */
+    new Vue({
+                el:'#app',
+                data:{
+                     arr:['iphone7','iphone8','iphone7']
+                }
+    })
+</script>
+</body>
+</html>

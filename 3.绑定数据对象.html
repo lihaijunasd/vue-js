@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul><!--item  index -->
+        <li v-for="(v,key) in obj">{{key}}{{v}}</li>
+    </ul>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+            /**
+             * 2.0版本
+             *没有声明的变量是不能使用的比如：$index
+             * @type {Vue}
+             */
+    var vue =new Vue({
+                el:'#app',
+                data:{
+                            obj:{name:"zhufeng",age:7}
+
+                }
+    })
+</script>
+</body>
+</html>

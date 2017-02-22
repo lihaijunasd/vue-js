@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+      <li @click="fn($event)">增加数据</li>
+        <!--没有参数的话不用加括号；如果需要传递，$event是代表事件源-->
+    </ul>
+    <ul>
+        <li v-for="v in msg">{{v}}</li>
+    </ul>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+            /**
+             * 2.0版本
+             *没有声明的变量是不能使用的比如：$index
+             * 所有方法中的this都是实例；数据是保存在实例上的
+             * v-on: ==@；指令可以使用@代替
+             * @type {Vue}
+             */
+            console.log(Vue);
+            var vue =new Vue({
+                        el:'#app',
+                        data:{
+                            msg:['a','b']
+                        },
+                        methods:{
+                                    fn:function (e){
+                                      this.msg.push('c')
+                                    }
+                        }
+            });
+            /*所以数据都会挂载到实例上；*/
+</script>
+</body>
+</html>
